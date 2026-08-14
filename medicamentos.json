@@ -1,0 +1,28 @@
+[
+    {
+        "id": "1",
+        "nombre": "Acetaminofén",
+        "principioActivo": "Paracetamol",
+        "presentacion": "Tabletas",
+        "concentracion": "500 mg",
+        "via": "Oral",
+        "dosis": "Según indicación médica",
+        "indicaciones": "Analgésico y antipirético.",
+        "contraindicaciones": "Hipersensibilidad al principio activo. Precaución en enfermedad hepática.",
+        "efectosAdversos": "Náuseas, reacciones cutáneas; sobredosis puede causar daño hepático.",
+        "observaciones": "Ejemplo de registro. Validar información con fuente farmacológica oficial."
+    },
+    {
+        "id": "2",
+        "nombre": "Ibuprofeno",
+        "principioActivo": "Ibuprofeno",
+        "presentacion": "Tabletas",
+        "concentracion": "400 mg",
+        "via": "Oral",
+        "dosis": "Según indicación médica",
+        "indicaciones": "Analgésico, antiinflamatorio y antipirético.",
+        "contraindicaciones": "Hipersensibilidad a AINE, antecedentes de úlcera o sangrado gastrointestinal, entre otras.",
+        "efectosAdversos": "Dispepsia, náuseas, dolor abdominal y otros efectos gastrointestinales.",
+        "observaciones": "Ejemplo de registro. Validar información con fuente farmacológica oficial."
+    }
+]
