@@ -23,21 +23,29 @@
 <body>
 
 
-<!-- =====================================================
+<!-- ==========================================
      ENCABEZADO
-===================================================== -->
+========================================== -->
 
 <header class="encabezado">
 
-    <div>
+    <div class="marca">
 
-        <h1>
-            💊 Vademécum Digital
-        </h1>
+        <div class="logo-medicamento">
+            💊
+        </div>
 
-        <p>
-            Consulta de información farmacológica
-        </p>
+        <div>
+
+            <h1>
+                Vademécum Digital
+            </h1>
+
+            <p>
+                Consulta de información farmacológica
+            </p>
+
+        </div>
 
     </div>
 
@@ -73,63 +81,60 @@
 
 
 
+<!-- ==========================================
+     CONTENIDO PRINCIPAL
+========================================== -->
+
 <main class="contenedor">
 
 
-<!-- =====================================================
-     VISTA DE CONSULTA
-===================================================== -->
+    <!-- ======================================
+         VISTA DE CONSULTA
+    ======================================= -->
 
-<section id="vistaConsulta">
+    <section
+        id="vistaConsulta"
+        class="vista-consulta"
+    >
 
 
-    <!-- ENCABEZADO DE CONSULTA -->
+        <!-- HERO -->
 
-    <div class="encabezado-consulta">
+        <div class="hero-consulta">
 
-        <div>
+            <div class="hero-icono">
+                💊
+            </div>
 
-            <span class="etiqueta-consulta">
-                💊 CONSULTA FARMACOLÓGICA
-            </span>
+            <div>
 
-            <h2>
-                Encuentra un medicamento
-            </h2>
+                <h2>
+                    Consulta de medicamentos
+                </h2>
 
-            <p>
-                Busca por nombre, principio activo o
-                clasificación.
-            </p>
+                <p>
+                    Busca un medicamento para consultar
+                    su información farmacológica.
+                </p>
+
+            </div>
 
         </div>
 
-    </div>
-
-
-
-    <!-- =================================================
-         FILTROS
-    ================================================== -->
-
-    <div class="filtros-consulta">
 
 
         <!-- BUSCADOR -->
 
-        <div class="campo-filtro campo-buscador">
+        <div class="buscador-principal">
 
-            <label for="buscador">
-
-                🔎 Buscar medicamento
-
-            </label>
-
+            <div class="icono-busqueda">
+                🔎
+            </div>
 
             <input
                 type="text"
                 id="buscador"
-                placeholder="Ej. Paracetamol, amoxicilina..."
+                placeholder="Buscar por nombre, principio activo, presentación..."
                 autocomplete="off"
             >
 
@@ -137,1031 +142,839 @@
 
 
 
-        <!-- CLASIFICACIÓN -->
+        <!-- FILTROS -->
 
-        <div class="campo-filtro">
-
-            <label for="filtroClasificacion">
-
-                💊 Clasificación
-
-            </label>
+        <div class="filtros-consulta">
 
 
-            <select id="filtroClasificacion">
+            <div class="campo-filtro">
 
-                <option value="">
-                    Todas las clasificaciones
-                </option>
+                <label for="filtroClasificacion">
 
-                <option value="Analgésico">
-                    Analgésico
-                </option>
+                    💊 Clasificación
 
-                <option value="Antipirético">
-                    Antipirético
-                </option>
+                </label>
 
-                <option value="Antiinflamatorio">
-                    Antiinflamatorio
-                </option>
 
-                <option value="Antibacteriano">
-                    Antibacteriano
-                </option>
+                <select
+                    id="filtroClasificacion"
+                >
 
-                <option value="Antiviral">
-                    Antiviral
-                </option>
+                    <option value="">
+                        Todas las clasificaciones
+                    </option>
 
-                <option value="Antifúngico">
-                    Antifúngico
-                </option>
+                    <option value="Analgésico">
+                        Analgésico
+                    </option>
 
-                <option value="Antiparasitario">
-                    Antiparasitario
-                </option>
+                    <option value="Antipirético">
+                        Antipirético
+                    </option>
 
-                <option value="Antihipertensivo">
-                    Antihipertensivo
-                </option>
+                    <option value="Antiinflamatorio">
+                        Antiinflamatorio
+                    </option>
 
-                <option value="Cardiovascular">
-                    Cardiovascular
-                </option>
+                    <option value="Antibacteriano">
+                        Antibacteriano
+                    </option>
 
-                <option value="Respiratorio">
-                    Respiratorio
-                </option>
+                    <option value="Antiviral">
+                        Antiviral
+                    </option>
 
-                <option value="Sistema nervioso">
-                    Sistema nervioso
-                </option>
+                    <option value="Antifúngico">
+                        Antifúngico
+                    </option>
 
-                <option value="Gastrointestinal">
-                    Gastrointestinal
-                </option>
+                    <option value="Antiparasitario">
+                        Antiparasitario
+                    </option>
 
-                <option value="Antialérgico">
-                    Antialérgico
-                </option>
+                    <option value="Antihipertensivo">
+                        Antihipertensivo
+                    </option>
 
-                <option value="Dermatológico">
-                    Dermatológico
-                </option>
+                    <option value="Cardiovascular">
+                        Cardiovascular
+                    </option>
 
-                <option value="Oftálmico">
-                    Oftálmico
-                </option>
+                    <option value="Respiratorio">
+                        Respiratorio
+                    </option>
 
-                <option value="Otológico">
-                    Otológico
-                </option>
+                    <option value="Sistema nervioso">
+                        Sistema nervioso
+                    </option>
 
-                <option value="Otro">
-                    Otro
-                </option>
+                    <option value="Gastrointestinal">
+                        Gastrointestinal
+                    </option>
 
-            </select>
+                    <option value="Antialérgico">
+                        Antialérgico
+                    </option>
+
+                    <option value="Dermatológico">
+                        Dermatológico
+                    </option>
+
+                    <option value="Oftálmico">
+                        Oftálmico
+                    </option>
+
+                    <option value="Otológico">
+                        Otológico
+                    </option>
+
+                    <option value="Otro">
+                        Otro
+                    </option>
+
+                </select>
+
+            </div>
+
 
         </div>
 
-    </div>
+
+
+        <!-- RESULTADOS -->
+
+        <div
+            id="listaMedicamentos"
+            class="grid-resultados"
+        ></div>
+
+
+        <!-- SIN RESULTADOS -->
+
+        <div
+            id="sinResultados"
+            class="sin-resultados hidden"
+        >
+
+            <div class="icono-vacio">
+                🔍
+            </div>
+
+            <h3>
+                No se encontraron medicamentos
+            </h3>
+
+            <p>
+                Intenta buscar utilizando otro nombre,
+                principio activo o clasificación.
+            </p>
+
+        </div>
+
+
+    </section>
 
 
 
-    <!-- =================================================
-         RESULTADOS
-    ================================================== -->
+    <!-- ======================================
+         VISTA ADMINISTRACIÓN
+    ======================================= -->
 
-    <div class="resultados-header">
-
-        <h3>
-            Resultados
-        </h3>
-
-        <span id="contadorConsulta"></span>
-
-    </div>
-
-
-    <div
-        id="listaMedicamentos"
-        class="grid-medicamentos"
-    ></div>
-
-
-    <div
-        id="sinResultados"
-        class="sin-resultados hidden"
+    <section
+        id="vistaAdmin"
+        class="hidden"
     >
 
-        <div class="icono-vacio">
-            🔍
-        </div>
 
-        <h3>
-            No encontramos medicamentos
-        </h3>
-
-        <p>
-            Intenta buscar por nombre o principio activo.
-        </p>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     MODAL DE INFORMACIÓN DEL MEDICAMENTO
-===================================================== -->
-
-<section
-    id="modalMedicamento"
-    class="modal modal-medicamento hidden"
->
-
-
-    <div class="modal-medicamento-contenido">
-
-
-        <!-- CABECERA MODAL -->
-
-        <div class="modal-medicamento-header">
-
+        <div class="admin-header">
 
             <div>
 
-                <span class="modal-etiqueta">
-                    💊 INFORMACIÓN FARMACOLÓGICA
+                <span class="etiqueta-admin">
+                    ADMINISTRACIÓN
                 </span>
 
-
-                <h2 id="modalNombreMedicamento">
-                    Medicamento
+                <h2>
+                    Administración de medicamentos
                 </h2>
 
-
-                <p id="modalPrincipioActivo">
-                    Principio activo
+                <p>
+                    Agrega, edita o elimina medicamentos
+                    del vademécum.
                 </p>
 
             </div>
 
 
             <button
-                id="btnCerrarMedicamento"
-                class="cerrar-modal"
-                type="button"
-                aria-label="Cerrar información"
+                id="btnVolver"
+                class="btn btn-secondary"
             >
-                ✕
+                ← Volver
             </button>
 
         </div>
 
 
 
-        <!-- CLASIFICACIÓN -->
+        <!-- ==================================
+             FORMULARIO
+        =================================== -->
 
-        <div
-            id="modalClasificacion"
-            class="modal-clasificacion"
-        >
-        </div>
+        <div class="panel">
 
+            <div class="panel-titulo">
 
-
-        <!-- CUERPO -->
-
-        <div class="modal-medicamento-body">
-
-
-            <!-- =========================================
-                 IDENTIFICACIÓN
-            ========================================== -->
-
-            <section class="modal-seccion">
-
-                <h3>
-                    📋 Identificación
-                </h3>
-
-
-                <div
-                    id="modalIdentificacion"
-                    class="datos-medicamento"
-                >
+                <div class="panel-icono">
+                    💊
                 </div>
 
-            </section>
-
-
-
-            <!-- =========================================
-                 USO
-            ========================================== -->
-
-            <section class="modal-seccion">
-
-                <h3>
-                    🩺 Uso
-                </h3>
-
-
-                <div
-                    id="modalUso"
-                    class="datos-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalMecanismo"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalIndicaciones"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalContraindicaciones"
-                    class="texto-medicamento"
-                >
-                </div>
-
-            </section>
-
-
-
-            <!-- =========================================
-                 PEDIATRÍA
-            ========================================== -->
-
-            <section
-                id="seccionPediatrica"
-                class="modal-seccion seccion-especial"
-            >
-
-                <h3>
-                    🧒 Consideraciones pediátricas
-                </h3>
-
-
-                <div
-                    id="modalDosisPediatrica"
-                    class="texto-medicamento"
-                >
-                </div>
-
-            </section>
-
-
-
-            <!-- =========================================
-                 INSUFICIENCIA RENAL
-            ========================================== -->
-
-            <section
-                id="seccionRenal"
-                class="modal-seccion seccion-especial"
-            >
-
-                <h3>
-                    🩺 Consideraciones en insuficiencia renal
-                </h3>
-
-
-                <div
-                    id="modalAjusteRenal"
-                    class="texto-medicamento"
-                >
-                </div>
-
-            </section>
-
-
-
-            <!-- =========================================
-                 SEGURIDAD
-            ========================================== -->
-
-            <section class="modal-seccion">
-
-                <h3>
-                    ⚠️ Seguridad
-                </h3>
-
-
-                <div
-                    id="modalPrecauciones"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalInteracciones"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalEfectosAdversos"
-                    class="texto-medicamento"
-                >
-                </div>
-
-            </section>
-
-
-
-            <!-- =========================================
-                 INFORMACIÓN ADICIONAL
-            ========================================== -->
-
-            <section class="modal-seccion">
-
-                <h3>
-                    📚 Información adicional
-                </h3>
-
-
-                <div
-                    id="modalObservaciones"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalFuente"
-                    class="texto-medicamento"
-                >
-                </div>
-
-
-                <div
-                    id="modalFecha"
-                    class="dato-medicamento"
-                >
-                </div>
-
-            </section>
-
-
-        </div>
-
-
-
-        <!-- PIE DEL MODAL -->
-
-        <div class="modal-medicamento-footer">
-
-            <p>
-                ⚕️ Información de referencia.
-                Validar siempre con fuentes clínicas oficiales.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     VISTA ADMINISTRACIÓN
-===================================================== -->
-
-<section
-    id="vistaAdmin"
-    class="hidden"
->
-
-
-    <div class="admin-header">
-
-        <div>
-
-            <h2>
-                Administración de medicamentos
-            </h2>
-
-            <p>
-                Agrega, edita o elimina medicamentos
-                del vademécum.
-            </p>
-
-        </div>
-
-
-        <button
-            id="btnVolver"
-            class="btn btn-secondary"
-        >
-            ← Volver
-        </button>
-
-    </div>
-
-
-
-    <!-- =================================================
-         FORMULARIO
-    ================================================== -->
-
-    <div class="panel">
-
-
-        <h3 id="tituloFormulario">
-            ➕ Agregar medicamento
-        </h3>
-
-
-        <form id="formMedicamento">
-
-
-            <input
-                type="hidden"
-                id="medicamentoId"
-            >
-
-
-
-            <div class="form-grid">
-
-
-                <!-- NOMBRE -->
-
-                <div class="campo">
-
-                    <label for="nombre">
-                        Nombre *
-                    </label>
-
-                    <input
-                        id="nombre"
-                        required
-                    >
+                <div>
+
+                    <h3 id="tituloFormulario">
+                        ➕ Agregar medicamento
+                    </h3>
+
+                    <p>
+                        Completa la información del medicamento.
+                    </p>
 
                 </div>
-
-
-
-                <!-- PRINCIPIO ACTIVO -->
-
-                <div class="campo">
-
-                    <label for="principioActivo">
-                        Principio activo *
-                    </label>
-
-                    <input
-                        id="principioActivo"
-                        required
-                    >
-
-                </div>
-
-
-
-                <!-- CLASIFICACIÓN -->
-
-                <div class="campo">
-
-                    <label for="clasificacion">
-                        Clasificación del medicamento
-                    </label>
-
-
-                    <select id="clasificacion">
-
-                        <option value="">
-                            Seleccionar clasificación
-                        </option>
-
-                        <option value="Analgésico">
-                            Analgésico
-                        </option>
-
-                        <option value="Antipirético">
-                            Antipirético
-                        </option>
-
-                        <option value="Antiinflamatorio">
-                            Antiinflamatorio
-                        </option>
-
-                        <option value="Antibacteriano">
-                            Antibacteriano
-                        </option>
-
-                        <option value="Antiviral">
-                            Antiviral
-                        </option>
-
-                        <option value="Antifúngico">
-                            Antifúngico
-                        </option>
-
-                        <option value="Antiparasitario">
-                            Antiparasitario
-                        </option>
-
-                        <option value="Antihipertensivo">
-                            Antihipertensivo
-                        </option>
-
-                        <option value="Cardiovascular">
-                            Cardiovascular
-                        </option>
-
-                        <option value="Respiratorio">
-                            Respiratorio
-                        </option>
-
-                        <option value="Sistema nervioso">
-                            Sistema nervioso
-                        </option>
-
-                        <option value="Gastrointestinal">
-                            Gastrointestinal
-                        </option>
-
-                        <option value="Antialérgico">
-                            Antialérgico
-                        </option>
-
-                        <option value="Dermatológico">
-                            Dermatológico
-                        </option>
-
-                        <option value="Oftálmico">
-                            Oftálmico
-                        </option>
-
-                        <option value="Otológico">
-                            Otológico
-                        </option>
-
-                        <option value="Otro">
-                            Otro
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-
-                <!-- GRUPO FARMACOLÓGICO -->
-
-                <div class="campo">
-
-                    <label for="grupoFarmacologico">
-                        Grupo farmacológico
-                    </label>
-
-                    <input
-                        type="text"
-                        id="grupoFarmacologico"
-                        placeholder="Ej. Penicilinas"
-                    >
-
-                </div>
-
-
-
-                <!-- FORMA FARMACÉUTICA -->
-
-                <div class="campo">
-
-                    <label for="formaFarmaceutica">
-                        Forma farmacéutica
-                    </label>
-
-                    <input
-                        type="text"
-                        id="formaFarmaceutica"
-                        placeholder="Ej. Tableta, cápsula, solución"
-                    >
-
-                </div>
-
-
-
-                <!-- LABORATORIO -->
-
-                <div class="campo">
-
-                    <label for="laboratorio">
-                        Laboratorio
-                    </label>
-
-                    <input
-                        type="text"
-                        id="laboratorio"
-                        placeholder="Nombre del laboratorio"
-                    >
-
-                </div>
-
-
-
-                <!-- PRESENTACIÓN -->
-
-                <div class="campo">
-
-                    <label for="presentacion">
-                        Presentación
-                    </label>
-
-                    <input
-                        id="presentacion"
-                        placeholder="Tabletas, cápsulas, jarabe..."
-                    >
-
-                </div>
-
-
-
-                <!-- CONCENTRACIÓN -->
-
-                <div class="campo">
-
-                    <label for="concentracion">
-                        Concentración
-                    </label>
-
-                    <input
-                        id="concentracion"
-                        placeholder="500 mg, 10 mg/mL..."
-                    >
-
-                </div>
-
-
-
-                <!-- VÍA -->
-
-                <div class="campo">
-
-                    <label for="via">
-                        Vía de administración
-                    </label>
-
-                    <input
-                        id="via"
-                        placeholder="Oral, intravenosa, tópica..."
-                    >
-
-                </div>
-
-
-
-                <!-- DOSIS -->
-
-                <div class="campo">
-
-                    <label for="dosis">
-                        Dosis habitual
-                    </label>
-
-                    <input
-                        id="dosis"
-                        placeholder="Dosis según indicación clínica"
-                    >
-
-                </div>
-
-
-
-                <!-- =================================================
-                     NUEVO: DOSIS PEDIÁTRICA
-                ================================================== -->
-
-                <div class="campo">
-
-                    <label for="dosisPediatrica">
-                        🧒 Dosis pediátrica
-                    </label>
-
-                    <textarea
-                        id="dosisPediatrica"
-                        rows="4"
-                        placeholder="Registrar la dosis pediátrica según edad, peso y fuente clínica..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     NUEVO: AJUSTE RENAL
-                ================================================== -->
-
-                <div class="campo">
-
-                    <label for="ajusteRenal">
-                        🩺 Ajuste en insuficiencia renal
-                    </label>
-
-                    <textarea
-                        id="ajusteRenal"
-                        rows="4"
-                        placeholder="Registrar recomendaciones o ajustes según función renal..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- MECANISMO -->
-
-                <div class="campo">
-
-                    <label for="mecanismoAccion">
-                        Mecanismo de acción
-                    </label>
-
-                    <textarea
-                        id="mecanismoAccion"
-                        rows="4"
-                        placeholder="Describe de forma clara cómo actúa el medicamento..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- PRECAUCIONES -->
-
-                <div class="campo">
-
-                    <label for="precauciones">
-                        Precauciones
-                    </label>
-
-                    <textarea
-                        id="precauciones"
-                        rows="3"
-                        placeholder="Precauciones de uso..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- INTERACCIONES -->
-
-                <div class="campo">
-
-                    <label for="interacciones">
-                        Interacciones
-                    </label>
-
-                    <textarea
-                        id="interacciones"
-                        rows="3"
-                        placeholder="Interacciones medicamentosas..."
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- FUENTE -->
-
-                <div class="campo">
-
-                    <label for="fuente">
-                        Fuente bibliográfica
-                    </label>
-
-                    <input
-                        type="text"
-                        id="fuente"
-                        placeholder="Fuente de la información"
-                    >
-
-                </div>
-
-
-
-                <!-- FECHA -->
-
-                <div class="campo">
-
-                    <label for="fechaActualizacion">
-                        Fecha de actualización
-                    </label>
-
-                    <input
-                        type="date"
-                        id="fechaActualizacion"
-                    >
-
-                </div>
-
-
-
-                <!-- INDICACIONES -->
-
-                <div class="campo campo-completo">
-
-                    <label for="indicaciones">
-                        Indicaciones
-                    </label>
-
-                    <textarea
-                        id="indicaciones"
-                        rows="3"
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- CONTRAINDICACIONES -->
-
-                <div class="campo campo-completo">
-
-                    <label for="contraindicaciones">
-                        Contraindicaciones
-                    </label>
-
-                    <textarea
-                        id="contraindicaciones"
-                        rows="3"
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- EFECTOS ADVERSOS -->
-
-                <div class="campo campo-completo">
-
-                    <label for="efectosAdversos">
-                        Efectos adversos
-                    </label>
-
-                    <textarea
-                        id="efectosAdversos"
-                        rows="3"
-                    ></textarea>
-
-                </div>
-
-
-
-                <!-- OBSERVACIONES -->
-
-                <div class="campo campo-completo">
-
-                    <label for="observaciones">
-                        Observaciones
-                    </label>
-
-                    <textarea
-                        id="observaciones"
-                        rows="3"
-                    ></textarea>
-
-                </div>
-
 
             </div>
 
 
+            <form id="formMedicamento">
 
-            <div class="acciones-form">
 
-
-                <button
-                    type="submit"
-                    class="btn btn-primary"
+                <input
+                    type="hidden"
+                    id="medicamentoId"
                 >
-                    💾 Guardar medicamento
-                </button>
 
 
-                <button
-                    type="button"
-                    id="btnCancelar"
-                    class="btn btn-secondary"
-                >
-                    Cancelar
-                </button>
+                <div class="form-grid">
 
 
-            </div>
+                    <!-- NOMBRE -->
+
+                    <div class="campo">
+
+                        <label for="nombre">
+                            Nombre *
+                        </label>
+
+                        <input
+                            id="nombre"
+                            required
+                            placeholder="Ej. Amoxicilina"
+                        >
+
+                    </div>
 
 
-        </form>
+                    <!-- PRINCIPIO ACTIVO -->
 
-    </div>
+                    <div class="campo">
 
+                        <label for="principioActivo">
+                            Principio activo *
+                        </label>
 
+                        <input
+                            id="principioActivo"
+                            required
+                            placeholder="Ej. Amoxicilina"
+                        >
 
-    <!-- =================================================
-         TABLA
-    ================================================== -->
-
-    <div class="panel">
-
-
-        <div class="tabla-header">
-
-            <h3>
-                📋 Medicamentos registrados
-            </h3>
+                    </div>
 
 
-            <span
-                id="contador"
-                class="contador"
-            >
-                0 medicamentos
-            </span>
+                    <!-- CLASIFICACIÓN -->
 
-        </div>
+                    <div class="campo">
+
+                        <label for="clasificacion">
+                            Clasificación
+                        </label>
+
+                        <select id="clasificacion">
+
+                            <option value="">
+                                Seleccionar clasificación
+                            </option>
+
+                            <option value="Analgésico">
+                                Analgésico
+                            </option>
+
+                            <option value="Antipirético">
+                                Antipirético
+                            </option>
+
+                            <option value="Antiinflamatorio">
+                                Antiinflamatorio
+                            </option>
+
+                            <option value="Antibacteriano">
+                                Antibacteriano
+                            </option>
+
+                            <option value="Antiviral">
+                                Antiviral
+                            </option>
+
+                            <option value="Antifúngico">
+                                Antifúngico
+                            </option>
+
+                            <option value="Antiparasitario">
+                                Antiparasitario
+                            </option>
+
+                            <option value="Antihipertensivo">
+                                Antihipertensivo
+                            </option>
+
+                            <option value="Cardiovascular">
+                                Cardiovascular
+                            </option>
+
+                            <option value="Respiratorio">
+                                Respiratorio
+                            </option>
+
+                            <option value="Sistema nervioso">
+                                Sistema nervioso
+                            </option>
+
+                            <option value="Gastrointestinal">
+                                Gastrointestinal
+                            </option>
+
+                            <option value="Antialérgico">
+                                Antialérgico
+                            </option>
+
+                            <option value="Dermatológico">
+                                Dermatológico
+                            </option>
+
+                            <option value="Oftálmico">
+                                Oftálmico
+                            </option>
+
+                            <option value="Otológico">
+                                Otológico
+                            </option>
+
+                            <option value="Otro">
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
+                    <!-- GRUPO -->
 
-        <div class="tabla-contenedor">
+                    <div class="campo">
 
-            <table>
+                        <label for="grupoFarmacologico">
+                            Grupo farmacológico
+                        </label>
 
-                <thead>
+                        <input
+                            id="grupoFarmacologico"
+                            placeholder="Ej. Penicilinas"
+                        >
 
-                    <tr>
+                    </div>
 
-                        <th>
-                            Nombre
-                        </th>
 
-                        <th>
-                            Principio activo
-                        </th>
+                    <!-- FORMA -->
 
-                        <th>
+                    <div class="campo">
+
+                        <label for="formaFarmaceutica">
+                            Forma farmacéutica
+                        </label>
+
+                        <input
+                            id="formaFarmaceutica"
+                            placeholder="Ej. Tableta, cápsula, solución"
+                        >
+
+                    </div>
+
+
+                    <!-- LABORATORIO -->
+
+                    <div class="campo">
+
+                        <label for="laboratorio">
+                            Laboratorio
+                        </label>
+
+                        <input
+                            id="laboratorio"
+                            placeholder="Nombre del laboratorio"
+                        >
+
+                    </div>
+
+
+                    <!-- PRESENTACIÓN -->
+
+                    <div class="campo">
+
+                        <label for="presentacion">
                             Presentación
-                        </th>
+                        </label>
 
-                        <th>
+                        <input
+                            id="presentacion"
+                            placeholder="Ej. Caja x 20 tabletas"
+                        >
+
+                    </div>
+
+
+                    <!-- CONCENTRACIÓN -->
+
+                    <div class="campo">
+
+                        <label for="concentracion">
                             Concentración
-                        </th>
+                        </label>
 
-                        <th>
-                            Acciones
-                        </th>
+                        <input
+                            id="concentracion"
+                            placeholder="Ej. 500 mg"
+                        >
 
-                    </tr>
-
-                </thead>
+                    </div>
 
 
-                <tbody
-                    id="tablaMedicamentos"
-                >
-                </tbody>
+                    <!-- VÍA -->
 
-            </table>
+                    <div class="campo">
+
+                        <label for="via">
+                            Vía de administración
+                        </label>
+
+                        <input
+                            id="via"
+                            placeholder="Ej. Oral"
+                        >
+
+                    </div>
+
+
+                    <!-- DOSIS -->
+
+                    <div class="campo">
+
+                        <label for="dosis">
+                            💊 Dosis habitual
+                        </label>
+
+                        <textarea
+                            id="dosis"
+                            rows="3"
+                            placeholder="Registrar dosis habitual..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- DOSIS PEDIÁTRICA -->
+
+                    <div class="campo dosis-especial">
+
+                        <label for="dosisPediatrica">
+                            👶 Dosis pediátrica
+                        </label>
+
+                        <textarea
+                            id="dosisPediatrica"
+                            rows="4"
+                            placeholder="Registrar dosis pediátrica, rango de edad/peso y observaciones..."
+                        ></textarea>
+
+                        <small>
+                            Registrar únicamente información
+                            validada en la fuente bibliográfica.
+                        </small>
+
+                    </div>
+
+
+                    <!-- DOSIS RENAL -->
+
+                    <div class="campo dosis-especial">
+
+                        <label for="dosisInsuficienciaRenal">
+                            🫘 Dosis en insuficiencia renal
+                        </label>
+
+                        <textarea
+                            id="dosisInsuficienciaRenal"
+                            rows="4"
+                            placeholder="Registrar ajustes de dosis según función renal..."
+                        ></textarea>
+
+                        <small>
+                            Registrar los ajustes según la
+                            fuente clínica correspondiente.
+                        </small>
+
+                    </div>
+
+
+                    <!-- MECANISMO -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="mecanismoAccion">
+                            🧬 Mecanismo de acción
+                        </label>
+
+                        <textarea
+                            id="mecanismoAccion"
+                            rows="4"
+                            placeholder="Describe cómo actúa el medicamento..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- INDICACIONES -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="indicaciones">
+                            Indicaciones
+                        </label>
+
+                        <textarea
+                            id="indicaciones"
+                            rows="4"
+                            placeholder="Indicaciones terapéuticas..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- CONTRAINDICACIONES -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="contraindicaciones">
+                            Contraindicaciones
+                        </label>
+
+                        <textarea
+                            id="contraindicaciones"
+                            rows="4"
+                            placeholder="Contraindicaciones..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- PRECAUCIONES -->
+
+                    <div class="campo">
+
+                        <label for="precauciones">
+                            Precauciones
+                        </label>
+
+                        <textarea
+                            id="precauciones"
+                            rows="4"
+                            placeholder="Precauciones..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- INTERACCIONES -->
+
+                    <div class="campo">
+
+                        <label for="interacciones">
+                            Interacciones
+                        </label>
+
+                        <textarea
+                            id="interacciones"
+                            rows="4"
+                            placeholder="Interacciones medicamentosas..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- EFECTOS -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="efectosAdversos">
+                            Efectos adversos
+                        </label>
+
+                        <textarea
+                            id="efectosAdversos"
+                            rows="4"
+                            placeholder="Efectos adversos..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- OBSERVACIONES -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="observaciones">
+                            Observaciones
+                        </label>
+
+                        <textarea
+                            id="observaciones"
+                            rows="4"
+                            placeholder="Información adicional..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- FUENTE -->
+
+                    <div class="campo">
+
+                        <label for="fuente">
+                            Fuente bibliográfica
+                        </label>
+
+                        <input
+                            id="fuente"
+                            placeholder="Ej. Guía, ficha técnica, vademécum..."
+                        >
+
+                    </div>
+
+
+                    <!-- FECHA -->
+
+                    <div class="campo">
+
+                        <label for="fechaActualizacion">
+                            Fecha de actualización
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaActualizacion"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="acciones-form">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        💾 Guardar medicamento
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="btnCancelar"
+                        class="btn btn-secondary"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-    </div>
 
 
-</section>
+        <!-- ==================================
+             TABLA
+        =================================== -->
+
+        <div class="panel">
+
+            <div class="tabla-header">
+
+                <div>
+
+                    <h3>
+                        📋 Medicamentos registrados
+                    </h3>
+
+                    <p>
+                        Administración del contenido
+                        del vademécum.
+                    </p>
+
+                </div>
+
+
+                <span
+                    id="contador"
+                    class="contador"
+                >
+                    0 medicamentos
+                </span>
+
+            </div>
+
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Nombre
+                            </th>
+
+                            <th>
+                                Principio activo
+                            </th>
+
+                            <th>
+                                Presentación
+                            </th>
+
+                            <th>
+                                Concentración
+                            </th>
+
+                            <th>
+                                Acciones
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="tablaMedicamentos"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </section>
 
 </main>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
+     MODAL DEL MEDICAMENTO
+========================================== -->
+
+<section
+    id="modalMedicamento"
+    class="modal modal-medicamento hidden"
+>
+
+    <div
+        class="modal-medicamento-contenido"
+    >
+
+
+        <button
+            id="btnCerrarMedicamento"
+            class="cerrar-modal medicamento-cerrar"
+            type="button"
+        >
+            ✕
+        </button>
+
+
+        <!-- CABECERA -->
+
+        <div
+            id="modalMedicamentoHeader"
+            class="modal-medicamento-header"
+        >
+
+            <!-- Se genera desde JS -->
+
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div
+            id="modalMedicamentoBody"
+            class="modal-medicamento-body"
+        >
+
+            <!-- Se genera desde JS -->
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="modal-medicamento-footer">
+
+            <span>
+                📚 Información de referencia
+            </span>
+
+            <button
+                id="btnCerrarMedicamentoFooter"
+                class="btn btn-secondary"
+                type="button"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
      MODAL LOGIN
-===================================================== -->
+========================================== -->
 
 <section
     id="modalLogin"
     class="modal hidden"
 >
-
 
     <div class="modal-contenido">
 
@@ -1169,13 +982,19 @@
         <button
             id="btnCerrarLogin"
             class="cerrar-modal"
+            type="button"
         >
             ✕
         </button>
 
 
+        <div class="login-icono">
+            🔐
+        </div>
+
+
         <h2>
-            🔐 Iniciar sesión
+            Iniciar sesión
         </h2>
 
 
@@ -1197,10 +1016,10 @@
                     type="email"
                     id="loginEmail"
                     required
+                    autocomplete="username"
                 >
 
             </div>
-
 
 
             <div class="campo">
@@ -1213,19 +1032,18 @@
                     type="password"
                     id="loginPassword"
                     required
+                    autocomplete="current-password"
                 >
 
             </div>
 
 
-
             <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-primary btn-login"
             >
                 🔑 Ingresar
             </button>
-
 
         </form>
 
@@ -1235,37 +1053,42 @@
             class="mensaje-login"
         ></p>
 
-
     </div>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      PIE DE PÁGINA
-===================================================== -->
+========================================== -->
 
 <footer>
 
     <p>
         Vademécum Digital — Información de referencia.
-        Validar siempre con fuentes clínicas oficiales.
+    </p>
+
+    <p>
+        Validar siempre la información con fuentes
+        clínicas y farmacológicas oficiales.
     </p>
 
 </footer>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      SCRIPTS
-===================================================== -->
+========================================== -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
 ></script>
 
-<script src="app.js"></script>
+<script
+    src="app.js"
+></script>
 
 
 </body>
