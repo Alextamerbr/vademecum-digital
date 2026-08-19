@@ -2,16 +2,28 @@
 // CONFIGURACIÓN DE SUPABASE
 // ==========================================
 
-const SUPABASE_URL = "https://sadlhusazftpfbtulnyg.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_pOyPAO1e5UhHV1oHXqV7kA_U6go4DzV";
+const SUPABASE_URL =
+    "https://sadlhusazftpfbtulnyg.supabase.co";
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_pOyPAO1e5UhHV1oHXqV7kA_U6go4DzV";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
 
 // ==========================================
-// ELEMENTOS DE LOGIN
+// VARIABLES
+// ==========================================
+
+let medicamentos = [];
+
+
+// ==========================================
+// ELEMENTOS LOGIN
 // ==========================================
 
 const btnLogin =
@@ -33,82 +45,8 @@ const mensajeLogin =
     document.getElementById("mensajeLogin");
 
 
-    // ==========================================
-// VERIFICAR SESIÓN
 // ==========================================
-
-async function verificarSesion() {
-
-    const {
-        data: {
-            session
-        }
-    } = await supabaseClient.auth.getSession();
-
-
-    actualizarInterfazSesion(
-        session
-    );
-
-}
-
-
-// ==========================================
-// ACTUALIZAR INTERFAZ
-// ==========================================
-
-function actualizarInterfazSesion(session) {
-
-    if (session) {
-
-        btnLogin.classList.add(
-            "hidden"
-        );
-
-        btnAdmin.classList.remove(
-            "hidden"
-        );
-
-        btnLogout.classList.remove(
-            "hidden"
-        );
-
-    } else {
-
-        btnLogin.classList.remove(
-            "hidden"
-        );
-
-        btnAdmin.classList.add(
-            "hidden"
-        );
-
-        btnLogout.classList.add(
-            "hidden"
-        );
-
-        vistaAdmin.classList.add(
-            "hidden"
-        );
-
-        vistaConsulta.classList.remove(
-            "hidden"
-        );
-
-    }
-
-}
-
-
-// ==========================================
-// VARIABLES
-// ==========================================
-
-let medicamentos = [];
-
-
-// ==========================================
-// ELEMENTOS HTML
+// ELEMENTOS PRINCIPALES
 // ==========================================
 
 const vistaConsulta =
@@ -149,7 +87,7 @@ const tituloFormulario =
 
 
 // ==========================================
-// INICIAR
+// INICIAR APLICACIÓN
 // ==========================================
 
 document.addEventListener(
@@ -170,6 +108,58 @@ async function iniciar() {
 
 }
 
+
+// ==========================================
+// VERIFICAR SESIÓN
+// ==========================================
+
+async function verificarSesion() {
+
+    const {
+        data: {
+            session
+        }
+    } =
+        await supabaseClient.auth.getSession();
+
+    actualizarInterfazSesion(session);
+
+}
+
+
+// ==========================================
+// ACTUALIZAR INTERFAZ DE SESIÓN
+// ==========================================
+
+function actualizarInterfazSesion(session) {
+
+    if (session) {
+
+        btnLogin.classList.add("hidden");
+
+        btnAdmin.classList.remove("hidden");
+
+        btnLogout.classList.remove("hidden");
+
+    }
+
+    else {
+
+        btnLogin.classList.remove("hidden");
+
+        btnAdmin.classList.add("hidden");
+
+        btnLogout.classList.add("hidden");
+
+        vistaAdmin.classList.add("hidden");
+
+        vistaConsulta.classList.remove("hidden");
+
+    }
+
+}
+
+
 // ==========================================
 // ABRIR LOGIN
 // ==========================================
@@ -182,9 +172,9 @@ btnLogin.addEventListener(
             "hidden"
         );
 
-        document.getElementById(
-            "loginEmail"
-        ).focus();
+        document
+            .getElementById("loginEmail")
+            .focus();
 
     }
 );
@@ -220,33 +210,31 @@ formLogin.addEventListener(
 
         event.preventDefault();
 
-
         const email =
-            document.getElementById(
-                "loginEmail"
-            ).value;
-
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim();
 
         const password =
-            document.getElementById(
-                "loginPassword"
-            ).value;
-
+            document
+                .getElementById("loginPassword")
+                .value;
 
         mensajeLogin.textContent =
             "⏳ Iniciando sesión...";
 
-
         const {
             data,
             error
-        } = await supabaseClient.auth.signInWithPassword({
+        } =
+            await supabaseClient.auth.signInWithPassword({
 
-            email: email,
+                email: email,
 
-            password: password
+                password: password
 
-        });
+            });
 
 
         if (error) {
@@ -268,17 +256,13 @@ formLogin.addEventListener(
             "hidden"
         );
 
-
         formLogin.reset();
 
-
         mensajeLogin.textContent = "";
-
 
         actualizarInterfazSesion(
             data.session
         );
-
 
         alert(
             "✅ Sesión iniciada correctamente."
@@ -286,6 +270,7 @@ formLogin.addEventListener(
 
     }
 );
+
 
 // ==========================================
 // CERRAR SESIÓN
@@ -297,7 +282,8 @@ btnLogout.addEventListener(
 
         const {
             error
-        } = await supabaseClient.auth.signOut();
+        } =
+            await supabaseClient.auth.signOut();
 
 
         if (error) {
@@ -313,10 +299,7 @@ btnLogout.addEventListener(
         }
 
 
-        actualizarInterfazSesion(
-            null
-        );
-
+        actualizarInterfazSesion(null);
 
         alert(
             "👋 Sesión cerrada."
@@ -325,8 +308,9 @@ btnLogout.addEventListener(
     }
 );
 
+
 // ==========================================
-// CARGAR DESDE SUPABASE
+// CARGAR MEDICAMENTOS
 // ==========================================
 
 async function cargarMedicamentos() {
@@ -334,13 +318,14 @@ async function cargarMedicamentos() {
     const {
         data,
         error
-    } = await supabaseClient
+    } =
+        await supabaseClient
 
-        .from("medicamentos")
+            .from("medicamentos")
 
-        .select("*")
+            .select("*")
 
-        .order("nombre");
+            .order("nombre");
 
 
     if (error) {
@@ -357,10 +342,12 @@ async function cargarMedicamentos() {
         medicamentos = [];
 
         return;
+
     }
 
 
-    medicamentos = data || [];
+    medicamentos =
+        data || [];
 
 }
 
@@ -373,23 +360,36 @@ function escaparHTML(valor) {
 
     return String(valor ?? "")
 
-        .replaceAll("&", "&amp;")
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-        .replaceAll("<", "&lt;")
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
 
-        .replaceAll(">", "&gt;")
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
 
-        .replaceAll('"', "&quot;")
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-        .replaceAll("'", "&#039;");
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
 }
 
 
 // ==========================================
-// MOSTRAR MEDICAMENTOS
-// ==========================================
-// ==========================================
-// MOSTRAR MEDICAMENTOS
+// RENDERIZAR CONSULTA
 // ==========================================
 
 function renderizarConsulta() {
@@ -399,55 +399,64 @@ function renderizarConsulta() {
             .trim()
             .toLowerCase();
 
+
     const filtroClasificacion =
-        document.getElementById(
-            "filtroClasificacion"
-        ).value;
+        document
+            .getElementById(
+                "filtroClasificacion"
+            )
+            .value;
 
 
     const resultados =
-        medicamentos.filter(medicamento => {
+        medicamentos.filter(
+            medicamento => {
 
-            const contenido = [
+                const contenido = [
 
-                medicamento.nombre,
+                    medicamento.nombre,
 
-                medicamento.principio_activo,
+                    medicamento.principio_activo,
 
-                medicamento.presentacion,
+                    medicamento.presentacion,
 
-                medicamento.concentracion,
+                    medicamento.concentracion,
 
-                medicamento.grupo_farmacologico
+                    medicamento.grupo_farmacologico,
 
-            ]
-            .join(" ")
-            .toLowerCase();
+                    medicamento.clasificacion
 
-
-            const coincideTexto =
-                contenido.includes(texto);
-
-
-            const coincideClasificacion =
-                !filtroClasificacion ||
-
-                medicamento.clasificacion ===
-                filtroClasificacion;
+                ]
+                    .join(" ")
+                    .toLowerCase();
 
 
-            return (
-                coincideTexto &&
-                coincideClasificacion
-            );
+                const coincideTexto =
+                    contenido.includes(texto);
 
-        });
+
+                const coincideClasificacion =
+                    !filtroClasificacion ||
+
+                    medicamento.clasificacion ===
+                    filtroClasificacion;
+
+
+                return (
+                    coincideTexto &&
+                    coincideClasificacion
+                );
+
+            }
+        );
 
 
     listaMedicamentos.innerHTML = "";
 
 
-    if (resultados.length === 0) {
+    if (
+        resultados.length === 0
+    ) {
 
         sinResultados.classList.remove(
             "hidden"
@@ -463,76 +472,61 @@ function renderizarConsulta() {
     );
 
 
-    resultados.forEach(medicamento => {
+    // ======================================
+    // CREAR TARJETAS RESUMIDAS
+    // ======================================
 
-        const tarjeta =
-            document.createElement(
-                "article"
-            );
+    resultados.forEach(
+        medicamento => {
 
-
-        tarjeta.className =
-            "tarjeta-medicamento";
-
-
-        tarjeta.innerHTML = `
-
-            <!-- ==========================
-                 CABECERA
-            =========================== -->
-
-            <div class="medicamento-header">
-
-                <div>
-
-                    <h2>
-                        💊 ${escaparHTML(
-                            medicamento.nombre
-                        )}
-                    </h2>
+            const tarjeta =
+                document.createElement(
+                    "article"
+                );
 
 
-                    <p class="principio-activo">
+            tarjeta.className =
+                "tarjeta-medicamento tarjeta-consulta";
+
+
+            tarjeta.innerHTML = `
+
+                <div class="medicamento-header">
+
+                    <div>
+
+                        <h2>
+                            💊
+                            ${escaparHTML(
+                                medicamento.nombre
+                            )}
+                        </h2>
+
+                        <p class="principio-activo">
+
+                            ${escaparHTML(
+                                medicamento.principio_activo ||
+                                "Principio activo no registrado"
+                            )}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="clasificacion-badge">
 
                         ${escaparHTML(
-                            medicamento.principio_activo ||
-                            "Principio activo no registrado"
+                            medicamento.clasificacion ||
+                            "Sin clasificación"
                         )}
 
-                    </p>
+                    </div>
 
                 </div>
 
 
-                <div class="clasificacion-badge">
-
-                    ${escaparHTML(
-                        medicamento.clasificacion ||
-                        "Sin clasificación"
-                    )}
-
-                </div>
-
-            </div>
-
-
-            <!-- ==========================
-                 IDENTIFICACIÓN
-            =========================== -->
-
-            <section class="seccion-medicamento">
-
-                <h3>
-                    📋 Identificación
-                </h3>
-
-
-                <div class="datos-medicamento">
-
-                    ${datoMedicamento(
-                        "Grupo farmacológico",
-                        medicamento.grupo_farmacologico
-                    )}
+                <div class="resumen-medicamento">
 
                     ${datoMedicamento(
                         "Presentación",
@@ -545,130 +539,348 @@ function renderizarConsulta() {
                     )}
 
                     ${datoMedicamento(
-                        "Forma farmacéutica",
-                        medicamento.forma_farmaceutica
-                    )}
-
-                    ${datoMedicamento(
-                        "Laboratorio",
-                        medicamento.laboratorio
-                    )}
-
-                </div>
-
-            </section>
-
-
-            <!-- ==========================
-                 USO
-            =========================== -->
-
-            <section class="seccion-medicamento">
-
-                <h3>
-                    🩺 Uso
-                </h3>
-
-
-                <div class="datos-medicamento">
-
-                    ${datoMedicamento(
-                        "Vía de administración",
+                        "Vía",
                         medicamento.via
                     )}
 
-                    ${datoMedicamento(
-                        "Dosis",
-                        medicamento.dosis
-                    )}
-
                 </div>
 
 
-                ${textoMedicamento(
-                    "🧬 Mecanismo de acción",
-                    medicamento.mecanismo_accion
-                )}
+                <div class="boton-ver-medicamento">
+
+                    👁️ Ver información completa
+
+                </div>
+
+            `;
 
 
-                ${textoMedicamento(
-                    "Indicaciones",
-                    medicamento.indicaciones
-                )}
+            // ==================================
+            // ABRIR MODAL
+            // ==================================
+
+            tarjeta.addEventListener(
+                "click",
+                () => {
+
+                    abrirModalMedicamento(
+                        medicamento
+                    );
+
+                }
+            );
 
 
-                ${textoMedicamento(
-                    "Contraindicaciones",
-                    medicamento.contraindicaciones
-                )}
+            listaMedicamentos.appendChild(
+                tarjeta
+            );
 
-
-                ${textoMedicamento(
-                    "Precauciones",
-                    medicamento.precauciones
-                )}
-
-
-                ${textoMedicamento(
-                    "Interacciones",
-                    medicamento.interacciones
-                )}
-
-
-                ${textoMedicamento(
-                    "Efectos adversos",
-                    medicamento.efectos_adversos
-                )}
-
-            </section>
-
-
-            <!-- ==========================
-                 INFORMACIÓN ADICIONAL
-            =========================== -->
-
-            <section class="seccion-medicamento">
-
-                <h3>
-                    📚 Información adicional
-                </h3>
-
-
-                ${textoMedicamento(
-                    "Observaciones",
-                    medicamento.observaciones
-                )}
-
-
-                ${textoMedicamento(
-                    "Fuente bibliográfica",
-                    medicamento.fuente
-                )}
-
-
-                ${datoMedicamento(
-                    "Fecha de actualización",
-                    medicamento.fecha_actualizacion
-                )}
-
-            </section>
-
-        `;
-
-
-        listaMedicamentos.appendChild(
-            tarjeta
-        );
-
-    });
+        }
+    );
 
 }
 
+
 // ==========================================
-// DATOS DE MEDICAMENTO
+// ABRIR MODAL DEL MEDICAMENTO
 // ==========================================
 
-function datoMedicamento(titulo, valor) {
+function abrirModalMedicamento(
+    medicamento
+) {
+
+    const modal =
+        document.getElementById(
+            "modalMedicamento"
+        );
+
+    const contenido =
+        document.getElementById(
+            "contenidoMedicamento"
+        );
+
+
+    if (!modal || !contenido) {
+
+        console.error(
+            "No existe el modalMedicamento en index.html"
+        );
+
+        return;
+
+    }
+
+
+    contenido.innerHTML = `
+
+        <div class="modal-medicamento-header">
+
+            <div>
+
+                <span class="modal-icono">
+                    💊
+                </span>
+
+                <h2>
+                    ${escaparHTML(
+                        medicamento.nombre
+                    )}
+                </h2>
+
+                <p>
+
+                    ${escaparHTML(
+                        medicamento.principio_activo ||
+                        "Principio activo no registrado"
+                    )}
+
+                </p>
+
+            </div>
+
+            <span class="clasificacion-badge">
+
+                ${escaparHTML(
+                    medicamento.clasificacion ||
+                    "Sin clasificación"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- ==========================
+             IDENTIFICACIÓN
+        =========================== -->
+
+        <section class="modal-seccion">
+
+            <h3>
+                📋 Identificación
+            </h3>
+
+            <div class="datos-medicamento">
+
+                ${datoMedicamento(
+                    "Grupo farmacológico",
+                    medicamento.grupo_farmacologico
+                )}
+
+                ${datoMedicamento(
+                    "Presentación",
+                    medicamento.presentacion
+                )}
+
+                ${datoMedicamento(
+                    "Concentración",
+                    medicamento.concentracion
+                )}
+
+                ${datoMedicamento(
+                    "Forma farmacéutica",
+                    medicamento.forma_farmaceutica
+                )}
+
+                ${datoMedicamento(
+                    "Laboratorio",
+                    medicamento.laboratorio
+                )}
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             USO
+        =========================== -->
+
+        <section class="modal-seccion">
+
+            <h3>
+                🩺 Uso
+            </h3>
+
+            <div class="datos-medicamento">
+
+                ${datoMedicamento(
+                    "Vía de administración",
+                    medicamento.via
+                )}
+
+                ${datoMedicamento(
+                    "Dosis general",
+                    medicamento.dosis
+                )}
+
+            </div>
+
+
+            ${textoMedicamento(
+                "🧬 Mecanismo de acción",
+                medicamento.mecanismo_accion
+            )}
+
+            ${textoMedicamento(
+                "Indicaciones",
+                medicamento.indicaciones
+            )}
+
+            ${textoMedicamento(
+                "Contraindicaciones",
+                medicamento.contraindicaciones
+            )}
+
+        </section>
+
+
+        <!-- ==========================
+             DOSIFICACIÓN ESPECIAL
+        =========================== -->
+
+        <section class="modal-seccion seccion-dosis-especial">
+
+            <h3>
+                👶 Dosificación pediátrica
+            </h3>
+
+            ${textoMedicamento(
+                "Dosis en pacientes pediátricos",
+                medicamento.dosis_pediatrica
+            )}
+
+        </section>
+
+
+        <!-- ==========================
+             FUNCIÓN RENAL
+        =========================== -->
+
+        <section class="modal-seccion seccion-renal">
+
+            <h3>
+                🩺 Ajuste en función renal
+            </h3>
+
+            ${textoMedicamento(
+                "Dosis en insuficiencia renal",
+                medicamento.dosis_renal
+            )}
+
+            ${textoMedicamento(
+                "Consideraciones en pacientes con problemas renales",
+                medicamento.consideraciones_renales
+            )}
+
+        </section>
+
+
+        <!-- ==========================
+             SEGURIDAD
+        =========================== -->
+
+        <section class="modal-seccion">
+
+            <h3>
+                ⚠️ Seguridad
+            </h3>
+
+            ${textoMedicamento(
+                "Precauciones",
+                medicamento.precauciones
+            )}
+
+            ${textoMedicamento(
+                "Interacciones",
+                medicamento.interacciones
+            )}
+
+            ${textoMedicamento(
+                "Efectos adversos",
+                medicamento.efectos_adversos
+            )}
+
+        </section>
+
+
+        <!-- ==========================
+             INFORMACIÓN ADICIONAL
+        =========================== -->
+
+        <section class="modal-seccion">
+
+            <h3>
+                📚 Información adicional
+            </h3>
+
+            ${textoMedicamento(
+                "Observaciones",
+                medicamento.observaciones
+            )}
+
+            ${textoMedicamento(
+                "Fuente bibliográfica",
+                medicamento.fuente
+            )}
+
+            ${datoMedicamento(
+                "Fecha de actualización",
+                medicamento.fecha_actualizacion
+            )}
+
+        </section>
+
+    `;
+
+
+    modal.classList.remove(
+        "hidden"
+    );
+
+    document.body.classList.add(
+        "modal-abierto"
+    );
+
+}
+
+
+// ==========================================
+// CERRAR MODAL MEDICAMENTO
+// ==========================================
+
+function cerrarModalMedicamento() {
+
+    const modal =
+        document.getElementById(
+            "modalMedicamento"
+        );
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add(
+        "hidden"
+    );
+
+    document.body.classList.remove(
+        "modal-abierto"
+    );
+
+}
+
+
+// ==========================================
+// DATOS MEDICAMENTO
+// ==========================================
+
+function datoMedicamento(
+    titulo,
+    valor
+) {
 
     if (
         !valor ||
@@ -685,11 +897,19 @@ function datoMedicamento(titulo, valor) {
         <div class="dato-medicamento">
 
             <span class="dato-titulo">
-                ${titulo}
+
+                ${escaparHTML(
+                    titulo
+                )}
+
             </span>
 
             <span class="dato-valor">
-                ${escaparHTML(valor)}
+
+                ${escaparHTML(
+                    valor
+                )}
+
             </span>
 
         </div>
@@ -698,11 +918,15 @@ function datoMedicamento(titulo, valor) {
 
 }
 
+
 // ==========================================
-// TEXTOS DE MEDICAMENTO
+// TEXTOS MEDICAMENTO
 // ==========================================
 
-function textoMedicamento(titulo, valor) {
+function textoMedicamento(
+    titulo,
+    valor
+) {
 
     if (
         !valor ||
@@ -719,11 +943,19 @@ function textoMedicamento(titulo, valor) {
         <div class="texto-medicamento">
 
             <h4>
-                ${titulo}
+
+                ${escaparHTML(
+                    titulo
+                )}
+
             </h4>
 
             <p>
-                ${escaparHTML(valor)}
+
+                ${escaparHTML(
+                    valor
+                )}
+
             </p>
 
         </div>
@@ -731,7 +963,6 @@ function textoMedicamento(titulo, valor) {
     `;
 
 }
-
 
 
 // ==========================================
@@ -752,7 +983,8 @@ function renderizarTabla() {
 
     tablaMedicamentos.innerHTML =
 
-        medicamentos.map(medicamento => `
+        medicamentos.map(
+            medicamento => `
 
             <tr>
 
@@ -829,7 +1061,8 @@ function renderizarTabla() {
 
             </tr>
 
-        `).join("");
+        `
+        ).join("");
 
 }
 
@@ -856,7 +1089,7 @@ function abrirAdministracion() {
 
 
 // ==========================================
-// VOLVER
+// VOLVER A CONSULTA
 // ==========================================
 
 function volverConsulta() {
@@ -894,7 +1127,7 @@ function limpiarFormulario() {
 
 
 // ==========================================
-// OBTENER DATOS DEL FORMULARIO
+// OBTENER DATOS FORMULARIO
 // ==========================================
 
 function obtenerDatosFormulario() {
@@ -902,99 +1135,143 @@ function obtenerDatosFormulario() {
     return {
 
         nombre:
-            document.getElementById(
-                "nombre"
-            ).value.trim(),
+            document
+                .getElementById("nombre")
+                .value
+                .trim(),
 
         principio_activo:
-            document.getElementById(
-                "principioActivo"
-            ).value.trim(),
+            document
+                .getElementById("principioActivo")
+                .value
+                .trim(),
 
         clasificacion:
-            document.getElementById(
-                "clasificacion"
-            ).value,
+            document
+                .getElementById("clasificacion")
+                .value,
 
         grupo_farmacologico:
-            document.getElementById(
-                "grupoFarmacologico"
-            ).value.trim(),
+            document
+                .getElementById("grupoFarmacologico")
+                .value
+                .trim(),
 
         presentacion:
-            document.getElementById(
-                "presentacion"
-            ).value.trim(),
+            document
+                .getElementById("presentacion")
+                .value
+                .trim(),
 
         concentracion:
-            document.getElementById(
-                "concentracion"
-            ).value.trim(),
+            document
+                .getElementById("concentracion")
+                .value
+                .trim(),
 
         mecanismo_accion:
-            document.getElementById(
-                "mecanismoAccion"
-            ).value.trim(),
+            document
+                .getElementById("mecanismoAccion")
+                .value
+                .trim(),
 
         forma_farmaceutica:
-            document.getElementById(
-                "formaFarmaceutica"
-            ).value.trim(),
+            document
+                .getElementById("formaFarmaceutica")
+                .value
+                .trim(),
 
         laboratorio:
-            document.getElementById(
-                "laboratorio"
-            ).value.trim(),
+            document
+                .getElementById("laboratorio")
+                .value
+                .trim(),
 
         via:
-            document.getElementById(
-                "via"
-            ).value.trim(),
+            document
+                .getElementById("via")
+                .value
+                .trim(),
 
         dosis:
-            document.getElementById(
-                "dosis"
-            ).value.trim(),
+            document
+                .getElementById("dosis")
+                .value
+                .trim(),
+
+        // ==================================
+        // NUEVAS DOSIS
+        // ==================================
+
+        dosis_pediatrica:
+            document
+                .getElementById("dosisPediatrica")
+                .value
+                .trim(),
+
+        dosis_renal:
+            document
+                .getElementById("dosisRenal")
+                .value
+                .trim(),
+
+        consideraciones_renales:
+            document
+                .getElementById("consideracionesRenales")
+                .value
+                .trim(),
+
+        // ==================================
+        // RESTO
+        // ==================================
 
         indicaciones:
-            document.getElementById(
-                "indicaciones"
-            ).value.trim(),
+            document
+                .getElementById("indicaciones")
+                .value
+                .trim(),
 
         contraindicaciones:
-            document.getElementById(
-                "contraindicaciones"
-            ).value.trim(),
+            document
+                .getElementById("contraindicaciones")
+                .value
+                .trim(),
 
         precauciones:
-            document.getElementById(
-                "precauciones"
-            ).value.trim(),
+            document
+                .getElementById("precauciones")
+                .value
+                .trim(),
 
         interacciones:
-            document.getElementById(
-                "interacciones"
-            ).value.trim(),
+            document
+                .getElementById("interacciones")
+                .value
+                .trim(),
 
         efectos_adversos:
-            document.getElementById(
-                "efectosAdversos"
-            ).value.trim(),
+            document
+                .getElementById("efectosAdversos")
+                .value
+                .trim(),
 
         observaciones:
-            document.getElementById(
-                "observaciones"
-            ).value.trim(),
+            document
+                .getElementById("observaciones")
+                .value
+                .trim(),
 
         fuente:
-            document.getElementById(
-                "fuente"
-            ).value.trim(),
+            document
+                .getElementById("fuente")
+                .value
+                .trim(),
 
         fecha_actualizacion:
-            document.getElementById(
-                "fechaActualizacion"
-            ).value || null
+            document
+                .getElementById("fechaActualizacion")
+                .value ||
+            null
 
     };
 
@@ -1013,9 +1290,9 @@ form.addEventListener(
 
 
         const id =
-            document.getElementById(
-                "medicamentoId"
-            ).value;
+            document
+                .getElementById("medicamentoId")
+                .value;
 
 
         const datos =
@@ -1030,13 +1307,14 @@ form.addEventListener(
 
             const {
                 error
-            } = await supabaseClient
+            } =
+                await supabaseClient
 
-                .from("medicamentos")
+                    .from("medicamentos")
 
-                .update(datos)
+                    .update(datos)
 
-                .eq("id", id);
+                    .eq("id", id);
 
 
             if (error) {
@@ -1048,6 +1326,7 @@ form.addEventListener(
                 );
 
                 return;
+
             }
 
 
@@ -1066,11 +1345,14 @@ form.addEventListener(
 
             const {
                 error
-            } = await supabaseClient
+            } =
+                await supabaseClient
 
-                .from("medicamentos")
+                    .from("medicamentos")
 
-                .insert([datos]);
+                    .insert([
+                        datos
+                    ]);
 
 
             if (error) {
@@ -1082,6 +1364,7 @@ form.addEventListener(
                 );
 
                 return;
+
             }
 
 
@@ -1105,7 +1388,7 @@ form.addEventListener(
 
 
 // ==========================================
-// EDITAR
+// EDITAR MEDICAMENTO
 // ==========================================
 
 function editarMedicamento(id) {
@@ -1136,15 +1419,12 @@ function editarMedicamento(id) {
     ).value =
         medicamento.nombre || "";
 
-    document.getElementById(
-        "mecanismoAccion"
-    ).value =
-        medicamento.mecanismo_accion || "";
 
     document.getElementById(
         "principioActivo"
     ).value =
         medicamento.principio_activo || "";
+
 
     document.getElementById(
         "clasificacion"
@@ -1156,6 +1436,24 @@ function editarMedicamento(id) {
         "grupoFarmacologico"
     ).value =
         medicamento.grupo_farmacologico || "";
+
+
+    document.getElementById(
+        "presentacion"
+    ).value =
+        medicamento.presentacion || "";
+
+
+    document.getElementById(
+        "concentracion"
+    ).value =
+        medicamento.concentracion || "";
+
+
+    document.getElementById(
+        "mecanismoAccion"
+    ).value =
+        medicamento.mecanismo_accion || "";
 
 
     document.getElementById(
@@ -1171,38 +1469,6 @@ function editarMedicamento(id) {
 
 
     document.getElementById(
-        "presentacion"
-    ).value =
-        medicamento.presentacion || "";
-
-
-    document.getElementById(
-        "concentracion"
-    ).value =
-        medicamento.concentracion || "";
-
-    document.getElementById(
-        "precauciones"
-    ).value =
-        medicamento.precauciones || "";
-
-    document.getElementById(
-        "fuente"
-    ).value =
-        medicamento.fuente || "";
-
-
-    document.getElementById(
-        "fechaActualizacion"
-    ).value =
-        medicamento.fecha_actualizacion || "";
-
-    document.getElementById(
-        "interacciones"
-    ).value =
-        medicamento.interacciones || "";
-
-    document.getElementById(
         "via"
     ).value =
         medicamento.via || "";
@@ -1213,6 +1479,32 @@ function editarMedicamento(id) {
     ).value =
         medicamento.dosis || "";
 
+
+    // ==================================
+    // NUEVOS CAMPOS
+    // ==================================
+
+    document.getElementById(
+        "dosisPediatrica"
+    ).value =
+        medicamento.dosis_pediatrica || "";
+
+
+    document.getElementById(
+        "dosisRenal"
+    ).value =
+        medicamento.dosis_renal || "";
+
+
+    document.getElementById(
+        "consideracionesRenales"
+    ).value =
+        medicamento.consideraciones_renales || "";
+
+
+    // ==================================
+    // RESTO
+    // ==================================
 
     document.getElementById(
         "indicaciones"
@@ -1227,6 +1519,18 @@ function editarMedicamento(id) {
 
 
     document.getElementById(
+        "precauciones"
+    ).value =
+        medicamento.precauciones || "";
+
+
+    document.getElementById(
+        "interacciones"
+    ).value =
+        medicamento.interacciones || "";
+
+
+    document.getElementById(
         "efectosAdversos"
     ).value =
         medicamento.efectos_adversos || "";
@@ -1236,6 +1540,18 @@ function editarMedicamento(id) {
         "observaciones"
     ).value =
         medicamento.observaciones || "";
+
+
+    document.getElementById(
+        "fuente"
+    ).value =
+        medicamento.fuente || "";
+
+
+    document.getElementById(
+        "fechaActualizacion"
+    ).value =
+        medicamento.fecha_actualizacion || "";
 
 
     tituloFormulario.textContent =
@@ -1254,7 +1570,7 @@ function editarMedicamento(id) {
 
 
 // ==========================================
-// ELIMINAR
+// ELIMINAR MEDICAMENTO
 // ==========================================
 
 async function eliminarMedicamento(id) {
@@ -1289,13 +1605,14 @@ async function eliminarMedicamento(id) {
 
     const {
         error
-    } = await supabaseClient
+    } =
+        await supabaseClient
 
-        .from("medicamentos")
+            .from("medicamentos")
 
-        .delete()
+            .delete()
 
-        .eq("id", id);
+            .eq("id", id);
 
 
     if (error) {
@@ -1348,7 +1665,91 @@ btnCancelar.addEventListener(
 
 
 // ==========================================
-// FILTROS DE CONSULTA
+// CERRAR MODAL MEDICAMENTO
+// ==========================================
+
+const btnCerrarMedicamento =
+    document.getElementById(
+        "btnCerrarMedicamento"
+    );
+
+
+if (btnCerrarMedicamento) {
+
+    btnCerrarMedicamento.addEventListener(
+        "click",
+        cerrarModalMedicamento
+    );
+
+}
+
+
+// ==========================================
+// CERRAR MODAL AL HACER CLIC FUERA
+// ==========================================
+
+const modalMedicamento =
+    document.getElementById(
+        "modalMedicamento"
+    );
+
+
+if (modalMedicamento) {
+
+    modalMedicamento.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                modalMedicamento
+            ) {
+
+                cerrarModalMedicamento();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// TECLA ESC PARA CERRAR MODAL
+// ==========================================
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            cerrarModalMedicamento();
+
+            if (
+                modalLogin &&
+                !modalLogin.classList.contains(
+                    "hidden"
+                )
+            ) {
+
+                modalLogin.classList.add(
+                    "hidden"
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+// ==========================================
+// FILTROS
 // ==========================================
 
 buscar.addEventListener(
@@ -1367,7 +1768,6 @@ document
     );
 
 
-
 // ==========================================
 // FUNCIONES GLOBALES
 // ==========================================
@@ -1377,3 +1777,6 @@ window.editarMedicamento =
 
 window.eliminarMedicamento =
     eliminarMedicamento;
+
+window.cerrarModalMedicamento =
+    cerrarModalMedicamento;
